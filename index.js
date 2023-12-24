@@ -1,14 +1,20 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
+const { restrictToLoggedinUserOnly, checkAuth } = require("./middlewares/auth");
 const path = require("path");
-const urlRoute = require("./routes/url");
-const staticRoute = require("./routes/staticRouter");
+require("dotenv").config();
+
 const { connectToMongodb } = require("./connect");
 const URL = require("./models/url");
 
-const app = express();
-const PORT = 8001;
+const urlRoute = require("./routes/url");
+const staticRoute = require("./routes/staticRouter");
+const userRoute = require("./routes/user");
 
-connectToMongodb("")
+const app = express();
+const PORT = process.env.PORT;
+
+connectToMongodb(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("MongoDB error...!!!", err));
 
@@ -17,9 +23,12 @@ app.set("views", path.resolve("./views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/url", urlRoute);
+app.use(cookieParser());
 
-app.use("/", staticRoute);
+app.use("/url", restrictToLoggedinUserOnly, urlRoute);
+app.use("/user", userRoute);
+
+app.use("/", checkAuth, staticRoute);
 
 app.get("/api/url/:shortId", async (req, res) => {
   const shortId = req.params.shortId;
