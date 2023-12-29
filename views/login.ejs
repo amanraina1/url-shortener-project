@@ -4,6 +4,32 @@
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: antiquewhite;
+      }
+      label {
+        font-weight: bold;
+        color: rgb(57, 63, 243);
+      }
+      input {
+        border: none;
+        padding: 15px 15px;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      button {
+        border: none;
+        background-color: rgb(131, 135, 237);
+        color: aliceblue;
+        border-radius: 20px;
+        padding: 15px 32px;
+        font-size: 16px;
+      }
+      h1 {
+        text-align: center;
+        color: #5c49ee;
       }
     </style>
     <meta charset="UTF-8" />
@@ -12,12 +38,14 @@
   </head>
   <body>
     <h1>LognIn Page</h1>
-    <form action="/user/login" method="post">
-      <label>Email</label>
-      <input type="text" required name="email" />
-      <label>Password</label>
-      <input type="text" required name="password" />
-      <button type="submit">Log In</button>
-    </form>
+    <div class="box">
+      <form action="/user/login" method="post">
+        <label>Email</label>
+        <input type="text" required name="email" />
+        <label>Password</label>
+        <input type="text" required name="password" />
+        <button type="submit">Log In</button>
+      </form>
+    </div>
   </body>
 </html>
