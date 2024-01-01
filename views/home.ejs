@@ -2,16 +2,24 @@
 <html lang="en">
   <head>
     <style>
+      span {
+        color: rgb(57, 63, 243);
+      }
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background-color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
       h1 {
         color: rgb(57, 63, 243);
       }
       input {
         border: none;
-        padding: 15px 15px;
+        padding: 10px 10px;
+        border-radius: 10px;
       }
       button {
         border: none;
@@ -20,6 +28,13 @@
         border-radius: 20px;
         padding: 15px 32px;
         font-size: 16px;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
       }
     </style>
     <meta charset="UTF-8" />
@@ -28,15 +43,17 @@
   </head>
   <body>
     <h1>URL SHORTENER</h1>
+    <br /><br />
     <% if (locals.id) { %>
     <p>URL Generated : http://localhost:8001/api/url/<%= id %></p>
     <% } %>
     <div>
       <form method="POST" action="/url">
-        <label for="">Enter your original URL</label>
+        <label for="">Enter your original URL : </label>
         <input type="text" name="url" placeholder="https://www.example.com" />
         <button type="submit">Generate</button>
       </form>
+      <br /><br />
     </div>
     <div>
       <% if (locals.urls) { %>
@@ -61,5 +78,9 @@
       </table>
       <% } %>
     </div>
+    <h3>
+      NOTE : If you want to visit any short url, go to this link with the
+      required shortID : http://localhost:8001/api/url/<span>${shortID}</span>
+    </h3>
   </body>
 </html>

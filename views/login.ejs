@@ -5,6 +5,10 @@
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background-color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
       }
       label {
         font-weight: bold;
@@ -12,12 +16,14 @@
       }
       input {
         border: none;
+        border-radius: 15%;
         padding: 15px 15px;
       }
       .box {
         display: flex;
         align-items: center;
         justify-content: center;
+        /* background-color: #fff; */
       }
       button {
         border: none;
@@ -26,6 +32,13 @@
         border-radius: 20px;
         padding: 15px 32px;
         font-size: 16px;
+        cursor: pointer;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
       h1 {
         text-align: center;
@@ -38,12 +51,18 @@
   </head>
   <body>
     <h1>LognIn Page</h1>
+    <br /><br />
+    <br /><br />
     <div class="box">
       <form action="/user/login" method="post">
         <label>Email</label>
+        <br />
         <input type="text" required name="email" />
+        <br /><br />
         <label>Password</label>
+        <br />
         <input type="text" required name="password" />
+        <br /><br />
         <button type="submit">Log In</button>
       </form>
     </div>

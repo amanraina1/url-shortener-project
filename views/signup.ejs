@@ -5,6 +5,10 @@
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background-color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
       }
       label {
         font-weight: bold;
@@ -13,6 +17,7 @@
       }
       input {
         border: none;
+        border-radius: 15px;
         padding: 15px 15px;
       }
       button {
@@ -22,10 +27,17 @@
         border-radius: 20px;
         padding: 15px 32px;
         font-size: 16px;
+        cursor: pointer;
       }
       h1 {
         text-align: center;
         color: #5c49ee;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
     </style>
     <meta charset="UTF-8" />
@@ -34,13 +46,20 @@
   </head>
   <body>
     <h1>SignUp Page</h1>
+    <br /><br />
     <form action="/user" method="post">
       <label>Full Name</label>
+      <br />
       <input type="text" required name="name" />
+      <br /><br />
       <label>Email</label>
+      <br />
       <input type="text" required name="email" />
+      <br /><br />
       <label>Password</label>
+      <br />
       <input type="text" required name="password" />
+      <br /><br />
       <button type="submit">Sign Up</button>
     </form>
   </body>
